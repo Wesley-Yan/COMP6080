@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Slackr</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- You can add your styles and scripts here -->
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/provided.css" />
+  <script type="module" src="src/helpers.js"></script>
+</head>
+
+<body>
+  <!-- This is an example app structure, you can modify this as much as you choose -->
+  <!-- <header class="banner">
+    <h1>Slackr</h1>
+  </header> -->
+  <main role="main">
+    <!-- app goes here -->
+    <div class = "error-popup">
+      <!-- <span class = "error-message">This is an error</span>
+      <span class = "close-button">&times</span> -->
+      <button class="close-btn" id = "close-button">×</button>
+      <h2>Error</h2>
+      <p>Oops! Something went wrong. Please try again later.</p>
+    </div>
+    <div class = "loading-popup">
+      <h2>loading page...</h2>
+    </div>
+    <div id = "login" class = "page-block">
+      <div class="login-container">
+        <h2>Login</h2>
+        <form>
+          <input type="text" placeholder="Email" class="login-input" id = "login-email">
+          <input type="password" placeholder="Password" class="login-input" id = "login-password">
+          <button type="submit" id="login-btn">Login</button>
+        </form>
+        Need an account? <a href="#" class="redirect" redirect="register">Register</a>
+      </div>
+    </div>
+    
+    <div id = "register" class = "page-block">
+      <div class="register-container">
+        <h2>Register</h2>
+        <form>
+          <input type="text" placeholder="Email" class="login-input" id = "register-email">
+          <input type="text" placeholder="Name" class="login-input" id="register-name"/>
+          <input type="password" placeholder="Password" class="login-input" id = "register-password">
+          <input type="password" placeholder="Confirm password" class="login-input" id="register-password-confirm">
+          <button type="submit" id="register-btn">Create account</button>
+        </form>
+        Already have an account?<a href="#" class="redirect" redirect="login">Log in</a>
+      </div>
+    </div>
+
+    <div id = "home" class = "page-block">
+      
+      <aside class = "sidebar">
+        <button id = "logout">Logout</button>
+          <!-- <h3>Channels</h3> -->
+          <div class = "sidebar-icon">
+            <div id = "profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+            </div>
+            <div id = "add-channel-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>
+            </div>
+          </div>
+          
+          <div id="createChannelModal" class="modal">
+            <div class="modal-content">
+              <span class="close-btn" id = "modal-close-btn">&times;</span>
+              <h3>Create a New Channel</h3>
+              <input type="text" id="channel-name" placeholder="Channel Name"> <br>
+              <input type="text" id = "channel-description" placeholder="Channel description">
+              <div>
+                <label>
+                  <input type="radio" name="channelType" id = "public" value="public" checked>
+                  Public
+                </label>
+                <label>
+                  <input type="radio" name="channelType" id = "private" value="private">
+                  Private
+                </label>
+              </div>
+              <button id="submitChannel">Create</button>
+            </div>
+          </div>
+
+          <div id="inviteModal" class="modal">
+            <div class="modal-content">
+              <span class="close-btn" id = "invite-close-btn">&times;</span>
+              <h3>Invite others to this Channel</h3>
+              <div id = "invite-list">
+                
+              </div>
+              <button id="submit-invite-btn">Invite</button>
+            </div>
+          </div>
+
+          <div id="editModal" class="modal">
+            <div class="modal-content">
+              <span class="close-btn" id = "edit-close-btn">&times;</span>
+              <h3>Edit this message</h3>
+              <input type = "text" id = "new-message" placeholder="Enter new message...">
+              <button id="submit-edit-btn">Save changes</button>
+            </div>
+          </div>
+
+          
+
+          <div id="profileModal" class="modal">
+            <div class="modal-content">
+              <span class="close-btn" id = "profile-close-btn">&times;</span>
+              <h3>User Profile</h3>
+              <div class="profile-photo">
+                <div class="image-box">
+                  <img id="userImg" src="default.png" alt="Profile Photo">
+                </div>
+              </div>
+              <div id = "profile-modal-info">
+
+              </div>
+            </div>
+          </div>
+
+          <div id="reactionModal" class="modal">
+            <div class="modal-content">
+              <span class="close-btn" id = "reaction-close-btn">&times;</span>
+              <h3>Select your reaction</h3>
+              <div>
+                <label>
+                  <input type="radio" name="channelType" id = "heart-icon" checked>
+                  ❤️
+                </label>
+                <label>
+                  <input type="radio" name="channelType" id = "tick-icon" >
+                  ✅
+                </label>
+                <label>
+                  <input type="radio" name="channelType" id = "sad-icon" >
+                  🙁
+                </label>
+              </div>
+              <button id="submit-reaction-btn">Make reaction</button>
+            </div>
+          </div>
+
+        <ul class = "channels" id = "channel-list">
+          <!-- <li>Channel Name</li> -->
+        </ul>
+      </aside>
+      <div class = "main-chat" id = "main-chat">
+        <div class = "chat-box">
+          <div class = "chat-header">
+            <div class = "header-container">
+              <div class = "name-box">
+                <h2  id = "channel-name-header">Channel Name</h2>
+              </div>
+              <div class = "btn-box">
+                <!-- <button>Invite</button> -->
+                <svg id = "invite-btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                <svg id = "leave-btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                </svg>
+                <svg id = "info-btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+                <svg id = "pinned-btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pin" viewBox="0 0 16 16">
+                  <path d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A5.921 5.921 0 0 1 5 6.708V2.277a2.77 2.77 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354zm1.58 1.408-.002-.001.002.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a4.922 4.922 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a4.915 4.915 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.775 1.775 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14c.06.1.133.191.214.271a1.78 1.78 0 0 0 .37.282z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class = "messages-display">
+            <div class = "page-container" id = "msg-container">
+              
+            </div>
+          </div>
+        </div>
+        <div class = "text-input">
+          <input id = "input-message" type="text" placeholder="Type a message...">
+          <!-- <label for="imageUpload">Select Image</label> -->
+          <input type="file" id="input-image" accept="image/*">
+          <button id = "send-message-btn">Send</button>
+        </div>
+      </div>
+
+      <div class = "channel-info" id = "channel-info-page">
+        Channel Name: <input type="text" id = "channel-info-name" value = "ASKKAJH"> <br />
+        <label for="description-info">Channel Description</label> <br>
+        <textarea name="" id="description-info" cols="30" rows="3"></textarea>
+        <p id = "channel-status">Status:</p>
+        <p id = "channel-create-time">Create time:</p>
+        <p id = "channel-creator">Creator:</p>
+        <button id = "channelInfo-change-btn">Save changes</button>
+      </div>
+
+      <div class = "unjoined-channel-info" id = "unjoined-channel-page">
+        <h3>You are not a member of this channel!</h3>
+        <button id = "join-channel-btn">Join</button>
+      </div>
+
+      <div class = "profile" id = "profile-page">
+        <div class="profile-photo">
+          <div class="image-box">
+            <img id="profileImage" src="default.png" alt="Profile Photo"> <!-- Placeholder URL as default -->
+            <input type="file" id="imageUpload">
+          </div>
+        </div>
+        <div class="profile-info">
+          <label>Name:</label>
+          <input type="text" id="profile-name" placeholder="Your Name">
+
+          <label>Bio:</label>
+          <textarea id="profile-bio" placeholder="Your Bio"></textarea>
+
+          <label>Email:</label>
+          <input type="email" id="profile-email" placeholder="Your Email">
+
+          <label>New Password:</label>
+          <input type="password" id="profile-password" placeholder="New Password">
+          <input type="checkbox" id="profile-togglePassword"> Show Password <br>
+
+          <button id = "update-profile-btn">Update Profile</button>
+        </div>
+      </div>
+
+      <div class = "pinned-message" id = "pinned-message-page">
+        <div class = "pinned-header">
+          Pinned Message
+          <span class="close-btn" id = "pinned-close-btn">&times;</span>
+        </div>
+        <div id = "pinned-container">
+          
+        </div>
+      </div>
+      
+    </div>
+
+    <div id="preview" >
+      <img id="preview-image" src="" alt="Enlarged Preview">
+    </div>
+
+    <div id = "loading-page">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#fff;display:block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <g transform="rotate(0 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(30 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(60 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(90 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(120 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(150 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(180 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(210 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(240 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(270 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(300 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+          </rect>
+        </g><g transform="rotate(330 50 50)">
+          <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+            <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+          </rect>
+        </g>
+        </svg>
+    </div>
+    
+  </main>
+  <!-- <footer>
+    <p>&copy; Slackr</p>
+  </footer> -->
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
