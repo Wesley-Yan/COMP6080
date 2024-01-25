@@ -1,0 +1,283 @@
+@media screen and (min-width: 454px) and (max-width: 1196px) {
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+    .top {
+        font-size: 2.5em
+    }
+    .right-title p{
+        line-height: 25px;
+        margin-top: 25px
+    }
+    .center-band {
+    width: 90%;
+    height: 10%;
+    background-color: rgb(37,37,37);
+    display: flex;
+    margin-top: 70px;
+    margin-left: 30px
+    }
+    .icon {
+        padding-top: 5%;
+        padding-left: 15px;
+    }
+    .center-content {
+        margin-top: 7%;
+        margin-left: 15px;
+        color: white;
+        font-style: italic;
+    }
+    .center-link {
+        width: 150px;
+        height: 40px;
+        color: white;
+        border-color: white;
+        border: solid;
+        background-color: rgb(37,37,37);
+        text-align: center;
+        margin-top: 6%;
+        margin-left: 50%;
+    }
+    .center-link p {
+        margin-top: 5px;
+        letter-spacing: 1px;
+    }
+
+    .multiple-line {
+        line-height: 20px;
+        color: rgb(196,194,193);
+    }
+
+    .example-google {
+        line-height: 20px;
+    }
+
+    .fee-comments p{
+        line-height: 15px;
+    }
+
+    .sign-up {
+        margin-bottom: 80px;
+    }
+}
+@media screen and (max-width: 453px) {
+    html, body {
+        width: 100%;
+        height: 1873px;
+        background-color: black;
+        overflow: hidden;
+    }
+    .mobile {
+        display: block;
+    }
+    .top {
+        display: none;
+    }
+    .middle {
+        display: none;
+    }
+    .big-table {
+        display: none;
+    }
+    .center-band {
+        display: none;
+    }
+    .sign-up {
+        display: none;
+    }
+    .compare-box {
+        display: none;
+    }
+    .example-box {
+        display: none;
+    }
+    .footer {
+        display: none;
+    }
+    .mobile-title {
+        color: white;
+        font-style: italic;
+        line-height: 0;
+        font-size: 2.2em;
+        margin-left: 25px;
+        font-weight: bold;
+    }
+
+    .mobile-fee-title {
+        margin-top: 15px;
+        border-bottom: 1px solid rgba(255,255,255,.25);
+        margin-right: 0px;
+        padding-left: 25px;
+        padding-bottom: 10px;
+        color: rgb(196,194,193);
+        font-size: 0.8em;
+        letter-spacing: 0.8px;
+    }
+    .mobile-italic {
+        font-style: italic;
+        color: white;
+        margin-left: 25px;
+        font-size: 1.1em
+    }
+    .fee-list {
+        margin-left: 25px;
+        margin-bottom: 110px
+    }
+    .fee-comments {
+        margin-left: 25px;
+        margin-bottom: 100px;
+    }
+    .fee-comments p {
+        line-height: 6px;
+    }
+    .mobile-center-container {
+        width: 400px;
+        height: 130px;
+        background-color: rgb(37,37,37);
+        margin-left: 25px;
+        
+    }
+    .mobile-center-box {
+        display: flex;
+    }
+    .mobile-center-content {
+        flex: 14;
+        color: white;
+        margin-top: 25px;
+        margin-left: 25px;
+        font-style: italic;
+        letter-spacing: 1px;
+    }
+    .mobile-icon {
+        flex: 2;
+        margin-top: 15px
+    }
+    .mobile-link {
+        width: 140px;
+        height: 30px;
+        color: white;
+        border-color: white;
+        border: solid;
+        background-color: rgb(37,37,37);
+        text-align: center;
+        margin-left: 25px;
+        margin-top: 20px;
+        letter-spacing: 1px;
+    }
+    .mobile-link p {
+        margin-top: 6px;
+        font-size: 0.9em
+    }
+    .mobile-link :hover {
+        background-color: white;
+        color: black;
+    }
+    .mobile-sign-up {
+        width: 180px;
+        height: 40px;
+        background-color: rgb(38,175,105);
+        text-align: center;
+        margin-left: 25px;
+        margin-top: 25px;
+    }
+    .mobile-sign-up p {
+        color: white;
+        padding-top: 10px;
+        letter-spacing: 2px;
+    }
+    .mobile-sign-up:hover {
+        opacity: 0.5;
+    }
+    .mobile-compare-title {
+        color: white;
+        font-style: italic;
+        font-size: 2em;
+        margin-left: 25px;
+        margin-top: 100px;
+    }
+    .company-row {
+        display: flex;
+        color: white;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,.25);
+        margin-left: 25px;
+        margin-right: 15px;
+    }
+    .mobile-us-title {
+        flex: 3;
+    }
+    .mobile-google-title {
+        flex: 4;
+    }
+    .facebook-title {
+        flex: 4;
+    }
+    .apple-title {
+        flex: 3;
+    }
+    .mobile-us {
+        flex: 3;
+        background-color: rgb(37,37,37);
+        font-size: 1.2em;
+        color: white
+    }
+    .mobile-google {
+        flex: 4;
+        margin-top: 20px
+    }
+    .facebook {
+        flex: 4;
+        margin-top: 20px
+    }
+    .mobile-apple {
+        flex: 3;
+        margin-top: 20px
+    }
+    .comparison-title {
+        color: rgb(196,194,193);
+        margin-left: 25px;
+        margin-top: 20px
+    }
+    .comparison-row {
+        color: rgb(196,194,193);
+        display: flex;
+        text-align: center;
+        vertical-align: middle;
+        border-top: 1px solid rgba(255,255,255,.25);
+        border-bottom: 1px solid rgba(255,255,255,.25);
+        margin-left: 25px;
+        margin-right: 15px;
+    }
+    .example-hat {
+        color: white;
+        font-style: italic;
+        font-size: 1.3em;
+        border-top: 1px solid rgba(255,255,255,.25);
+        margin-left: 25px;
+        padding-top: 15px;
+        margin-top: 40px;
+        margin-bottom: 0
+    }
+    .example-title {
+        color: rgb(196,194,193);
+        margin-left: 25px;
+        margin-top: 5px
+    }
+    .google-example {
+        flex: 4;
+        margin-top: 3px
+    }
+    .multiple-line {
+        line-height: 2px;
+        
+    }
+    .example-brand {
+        padding-top: 7px;
+    }
+    .mobile-footer {
+        color: white;
+        margin-left: 25px;
+        margin-top: 35px;
+    }
+}

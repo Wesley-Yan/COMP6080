@@ -1,0 +1,238 @@
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: black;
+    width: 1197px;
+    height: 1610px;
+    overflow: hidden;
+}
+.top {
+    display: flex;
+    color: white;
+    margin-left: 30px;
+    line-height: 0;
+    font-size: 4em;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 20px
+}
+.left-title {
+    flex: 2;
+}
+.right-title {
+    flex: 2;
+}
+.middle {
+    display: flex;
+}
+.middle-left {
+    flex: 2
+}
+.middle-right {
+    flex: 2
+}
+.left-container {
+    flex: 2;
+    
+}
+.right-container {
+    flex: 2;
+}
+.fee-title {
+    margin-top: 30px;
+    border-bottom: 1px solid rgba(255,255,255,.25);
+    margin-right: 150px;
+    margin-left: 30px;
+    color: rgb(196,194,193);
+}
+.fee-list {
+    color: rgb(196,194,193)
+}
+.fee-content {
+    margin-top: 30px;
+    color: white;
+    margin-left: 30px;
+    font-size: 1.2em;
+}
+.italic-font {
+    font-style: italic;
+    letter-spacing: 1px;
+    padding-right: 160px;
+}
+.fee-comments {
+    font-size: 0.85em;
+    color: rgb(196,194,193);
+    line-height: 5px;
+}
+ul {
+    list-style-image: url(assets/tick.svg);
+    padding-left: 20px;
+    line-height: 35px;
+}
+li {
+    padding-left: 10px;
+}
+.center-band {
+    width: 1130px;
+    height: 100px;
+    background-color: rgb(37,37,37);
+    display: flex;
+    margin-top: 70px;
+    margin-left: 30px
+}
+.icon {
+    padding-top: 20px;
+    padding-left: 15px;
+}
+.icon img {
+    width: 50px
+}
+.center-content {
+    margin-top: 40px;
+    margin-left: 15px;
+    color: white;
+    font-style: italic;
+}
+.center-link {
+    width: 150px;
+    height: 40px;
+    color: white;
+    margin-left: 650px;
+    border-color: white;
+    border: solid;
+    background-color: rgb(37,37,37);
+    text-align: center;
+    margin-top: 30px;
+}
+.center-link p {
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+.center-link:hover {
+    background-color: white;
+    color: black;
+}
+.sign-up {
+    width: 180px;
+    height: 40px;
+    background-color: rgb(38,175,105);
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 40px;
+    margin-bottom: 150px
+}
+.sign-up p {
+    color: white;
+    padding-top: 10px;
+    letter-spacing: 2px;
+}
+.sign-up:hover {
+    opacity: 0.5;
+}
+
+.footer {
+    color: white;
+    margin-left: 30px;
+    margin-top: 60px;
+}
+
+.mobile {
+    display: none;
+}
+.compare-box {
+    display: flex;
+    margin-left: 30px;
+    margin-right: 50px;
+    border-bottom: 1px solid rgba(255,255,255,.25);
+    
+}
+.compare-row {
+    flex: 6;
+    display: flex;
+    color: white;
+    text-align: center;
+}
+.compare-item {
+    flex: 3;
+    color: rgb(196,194,193);
+    margin-top: 5px
+}
+.us {
+    flex: 2;
+    background-color: rgb(37,37,37);
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 1.3em
+}
+.us-title {
+    flex: 2;
+    margin: 0;
+    padding-top: 25px;
+    padding-bottom: 20px;
+}
+.google {
+    flex: 3;
+    line-height: 1px;
+    margin-top: 30px;
+    color: rgb(196,194,193);
+}
+.fb {
+    flex: 3;
+    margin-top: 20px;
+    color: rgb(196,194,193);
+}
+.apple {
+    flex: 2;
+    margin-top: 20px;
+    color: rgb(196,194,193);
+}
+.white-title {
+    color: white;
+    margin-top: 22px;
+}
+.google-title {
+    color: white;
+    margin-top: 32px;
+}
+.example-box {
+    display: flex;
+    margin-left: 30px;
+    margin-right: 50px;
+    border-bottom: 1px solid rgba(255,255,255,.25);
+    border-top: 1px solid rgba(255,255,255,.25);
+    margin-top: 60px;
+}
+.italic-title {
+    font-style: italic;
+    font-size: 1.2em;
+    color: white
+}
+.multiple-line {
+    line-height: 2px;
+    color: rgb(196,194,193);
+}
+.example-us {
+    flex: 2;
+    background-color: rgb(37,37,37);
+    margin: 0;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-size: 1.3em
+}
+.example-google {
+    flex: 3;
+    line-height: 1px;
+    margin-top: 25px;
+    color: rgb(196,194,193);
+}
+.example-fb {
+    flex: 3;
+    margin-top: 42px;
+    color: rgb(196,194,193);
+}
+.example-apple {
+    flex: 2;
+    margin-top: 42px;
+    color: rgb(196,194,193);
+}
